@@ -1,0 +1,47 @@
+@startuml
+
+title Pneumonia Detection Algorithm
+
+
+start
+while(Patient DICOM images available) is (Yes)
+
+partition checkDicom {
+    if (modality == DX) then (True)
+      
+      if (pos == 'AP' or 'PA')
+        if (body part == 'CHEST')
+          :IMG = DICOM Pixel Array;
+        else (False)
+          :IMG = None;
+        endif
+      else (False)
+        :IMG = None;
+      endif
+    else (False)
+      :IMG = None;
+    endif
+}
+
+partition ExecuteModel {
+    if (IMG != None) then (True)
+      :preprocess_image(IMG);
+      ->processed image;
+      :predict_image(model, IMG, threshold);
+      ->prediction;
+      if (prediction > threshold (0.3014)) then (True)
+        :Output 'Positive: Pneumonia Detected';
+      else (False)
+        :Output 'Negative: Pneumonia Not Detected';
+      endif
+    else (False)
+      :Continue to next DICOM;
+    endif
+}
+endwhile (No);
+
+:Exit Program;
+
+stop
+
+@enduml
