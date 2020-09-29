@@ -9,12 +9,14 @@
 Apply a convolutional neural network to detect Pneumonia in X-Ray images.
 
 Part 1) Exploratory Data Analysis of NIH X-Ray dataset.
-*EDA.ipynb*
+***EDA.ipynb***
 
 Part 2) Build and train model.
-*Train_model.ipynb*
+***Train_model.ipynb***
 
 Part 3) Load and execute model for inference on test data.
-*Inference.ipynb*
+***Inference.ipynb***
+
+Mock FDA Device submission: ***FDA_Submission.pdf***
 
 Project completed as part of Udacity AI for Healthcare course (2020).
